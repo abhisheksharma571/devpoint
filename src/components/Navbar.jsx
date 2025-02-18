@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
+import CallbackForm2 from './CallbackForm2';
 
 const Navbar = () => {
   return (
@@ -9,10 +10,12 @@ const Navbar = () => {
         <img src="./devpoint-logo-removebg.png" alt="Your Logo" className="h-6 sm:h-10 w-auto"/>
       </Link>
 
+
+      <CallbackForm2 />
       {/* Book a Callback Button */}
-      <button className="bg-white text-black font-semibold px-4 py-1 my-1 ml-6 rounded-full hover:bg-gray-200 transition">
+      {/* <button className="bg-white text-black font-semibold px-4 py-1 my-1 ml-6 rounded-full hover:bg-gray-200 transition">
         Book a Callback
-      </button>
+      </button> */}
     </main>
   );
 };
