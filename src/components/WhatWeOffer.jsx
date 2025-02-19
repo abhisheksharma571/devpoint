@@ -1,83 +1,136 @@
 "use client";
-import React from "react";
-import { StickyScroll } from "./ui/sticky-scroll-reveal";
+import { useMotionValue, motion, useSpring, useTransform } from "framer-motion";
+import React, { useRef } from "react";
 
-const content = [
-  {
-    title: "Website Development",
-    description:
-      "We craft responsive, high-performance websites tailored to your business needs. Whether it's a corporate site, portfolio, or custom web solution, we focus on user experience, speed, and functionality. Our websites are SEO-friendly, mobile-optimized, and designed to drive engagement and conversions.",
-    content: (
-        <div className="h-full w-full  flex items-center justify-center text-white">
-        <img
-          src="./web-dev.png"
-          width={400}
-          height={300}
-          className="h-full w-full object-cover"
-          alt="linear board demo"
-        />
-      </div>
-    ),
-  },
-  {
-    title: "E-Commerce Solutions",
-    description:
-      "Our e-commerce solutions help you establish a seamless online store with secure payment gateways, user-friendly navigation, and a smooth checkout process. From small businesses to large-scale enterprises, we design custom e-commerce platforms that enhance customer experience, boost sales, and streamline operations efficiently.",
-    content: (
-      <div className="h-full w-full  flex items-center justify-center text-white">
-        <img
-          src="./e-com.png"
-          width={400}
-          height={300}
-          className="h-full w-full object-cover"
-          alt="linear board demo"
-        />
-      </div>
-    ),
-  },
-  {
-    title: "SEO Optimization",
-    description:
-      "Our SEO services ensure your website ranks higher on search engines, driving organic traffic and improving visibility. We optimize on-page content, build high-quality backlinks, and refine technical SEO to enhance performance. With a strategic approach, we help your business attract the right audience and achieve long-term growth.",
-    content: (
-        <div className="h-full w-full  flex items-center justify-center text-white">
-        <img
-          src="./seo.png"
-          width={400}
-          height={300}
-          className="h-full w-full object-cover"
-          alt="linear board demo"
-        />
-      </div>
-    ),
-  },
-  {
-    title: "Social Media Marketing",
-    description:
-      "We help brands grow their online presence through targeted social media strategies. From content creation to ad campaigns, we engage your audience across platforms like Facebook, Instagram, and LinkedIn. Our goal is to increase brand awareness, drive traffic, and boost conversions through data-driven marketing.",
-    content: (
-        <div className="h-full w-full  flex items-center justify-center text-white">
-        <img
-          src="./social.png"
-          
-          height={300}
-          className="h-full w-full object-cover"
-          alt="linear board demo"
-        />
-      </div>
-    ),
-  },
-];
-export default function WhatWeOffer() {
+export const WhatWeOffer = () => {
   return (
-    <div className="bg-black/[0.96] antialiased bg-grid-white/[0.02]">
-        <h1 className="text-3xl md:text-5xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50 mb-4 pb-2">
-            Boost your business with
-            <br /> Website Development and Digital Marketing.
-        </h1>
-        <div>
-            <StickyScroll content={content} />
-        </div>
-    </div>
+    <section className="bg-black/[0.96] antialiased bg-grid-white/[0.02] p-4 md:p-8">
+      <p className="text-4xl md:text-7xl font-bold text-center text-white mb-10">What We Offer?</p>
+      <div className="mx-auto max-w-6xl">
+        <Link
+          heading="Website Development"
+          subheading="We craft fast, responsive, and user-friendly websites for your business."
+          imgSrc="./web-dev.png"
+        />
+        <Link
+          heading="E-commerce Solutions"
+          subheading="Build secure, scalable stores designed for seamless shopping"
+          imgSrc="./e-com.png"
+        />
+        <Link
+          heading="SEO Optimization"
+          subheading="Boost rankings, drive traffic, and grow your online presence"
+          imgSrc="./seo.png"
+        />
+        <Link
+          heading="Social Media Marketing"
+          subheading="Connect, engage, and convert with strategic social campaigns"
+          imgSrc="./social.png"
+        />
+      </div>
+    </section>
   );
-}
+};
+
+const Link = ({ heading, imgSrc, subheading, href }) => {
+  const ref = useRef(null);
+
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const mouseXSpring = useSpring(x);
+  const mouseYSpring = useSpring(y);
+
+  const top = useTransform(mouseYSpring, [0.5, -0.5], ["40%", "60%"]);
+  const left = useTransform(mouseXSpring, [0.5, -0.5], ["60%", "70%"]);
+
+  const handleMouseMove = (e) => {
+    const rect = ref.current.getBoundingClientRect();
+
+    const width = rect.width;
+    const height = rect.height;
+
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+
+    const xPct = mouseX / width - 0.5;
+    const yPct = mouseY / height - 0.5;
+
+    x.set(xPct);
+    y.set(yPct);
+  };
+
+  return (
+    <motion.a
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      initial="initial"
+      whileHover="whileHover"
+      className="group relative flex items-center justify-between border-b-2 border-neutral-700 py-4 transition-colors duration-500 hover:border-neutral-50 md:py-8"
+    >
+      <div>
+        <motion.span
+          variants={{
+            initial: { x: 0 },
+            whileHover: { x: -16 },
+          }}
+          transition={{
+            type: "spring",
+            staggerChildren: 0.075,
+            delayChildren: 0.25,
+          }}
+          className="relative z-10 block text-4xl font-bold text-neutral-500 transition-colors duration-500 group-hover:text-neutral-50 md:text-6xl"
+        >
+          {heading.split(" ").map((word, i) => (
+            <motion.span
+              variants={{
+                initial: { x: 0 },
+                whileHover: { x: 16 },
+              }}
+              transition={{ type: "spring" }}
+              className="inline-block mr-2" // Add spacing between words
+              key={i}
+            >
+              {word}
+            </motion.span>
+          ))}
+        </motion.span>
+        <span className="relative z-10 mt-2 block text-base text-neutral-500 transition-colors duration-500 group-hover:text-neutral-50">
+          {subheading}
+        </span>
+      </div>
+
+      <motion.img
+        style={{
+          top,
+          left,
+          translateX: "-50%",
+          translateY: "-50%",
+        }}
+        variants={{
+          initial: { scale: 0, rotate: "-12.5deg" },
+          whileHover: { scale: 1, rotate: "12.5deg" },
+        }}
+        transition={{ type: "spring" }}
+        src={imgSrc}
+        className="absolute z-0 h-24 w-auto rounded-lg object-cover md:h-60 md:w-auto ml-48"
+        alt={`Image representing a link for ${heading}`}
+      />
+
+      <motion.div
+        variants={{
+          initial: {
+            x: "25%",
+            opacity: 0,
+          },
+          whileHover: {
+            x: "0%",
+            opacity: 1,
+          },
+        }}
+        transition={{ type: "spring" }}
+        className="relative z-10 p-4"
+      ></motion.div>
+    </motion.a>
+  );
+};

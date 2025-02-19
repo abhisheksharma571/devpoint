@@ -26,6 +26,7 @@ export default function RootLayout({ children }) {
       >
         <div className="fixed top-6 left-0 right-0 z-50">
           <Navbar />
+          {/* <HeroScroll /> */}
         </div>
         {children}
         <Toaster />

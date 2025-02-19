@@ -54,7 +54,7 @@ const CallbackForm2 = () => {
             Request a Callback
           </button>
         </DialogTrigger>
-        <DialogContent className="backdrop-blur-md">
+        <DialogContent>
           <DialogHeader>
             <DialogTitle>You are one step away! Fill out the form.</DialogTitle>
           </DialogHeader>
