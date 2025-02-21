@@ -1,18 +1,16 @@
 
 import React from "react";
-import BlurText from "../components/bitsui/BlurText";
 import CallbackForm from "./CallbackForm";
 
 const OneStepAway = () => {
   return (
-    <div className="h-auto py-[60px] bg-black/[0.96] antialiased bg-grid-white/[0.02] flex flex-col gap-5">
-      <BlurText
-        text="Want your Business to grow?!"
-        delay={150}
-        animateBy="words"
-        direction="top"
-        className="text-[60px] text-white text-center font-semibold"
-      />
+    <div className="bg-black/[0.96] antialiased bg-grid-white/[0.02] flex flex-col gap-5 pb-12">
+      <p className="text-3xl md:text-5xl text-center text-white pt-20 pb-2">
+        One call can change everything!
+      </p>
+      <p className="text-center text-xl md:text-2xl text-white pb-12">
+        Let’s explore how we can help your business!
+      </p>
       <CallbackForm/>
     </div>
   );

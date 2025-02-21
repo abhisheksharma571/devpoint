@@ -1,22 +1,46 @@
-import Link from 'next/link';
-import React from 'react';
-import CallbackForm2 from './CallbackForm2';
+"use client";
+import Link from "next/link";
+import { FaInstagram, FaLinkedin, FaPhoneAlt } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import { useState } from "react";
+import CallbackForm2 from "./CallbackForm2";
 
 const Navbar = () => {
+  const [open, setOpen] = useState(false);
+
   return (
-    <main className="backdrop-blur-lg bg-[rgba(24,24,24,0.6)] px-8 py-1 mx-auto max-w-fit gap-[0px] sm:gap-[200px] md:gap-[300px] rounded-full flex items-center border border-gray-700">
+    <nav className="fixed top-0 w-full backdrop-blur-md bg-[rgba(24,24,24,0.6)] px-8 py-3 flex justify-between items-center z-50">
       {/* Logo */}
       <Link href="/" className="flex items-center">
-        <img src="./devpoint-logo-removebg.png" alt="Your Logo" className="h-6 sm:h-10 w-auto"/>
+        <img src="/devpoint-logo-removebg.png" alt="Logo" className="h-8 sm:h-10 w-auto" />
       </Link>
 
+      {/* Social Icons */}
+      <div className="flex items-center space-x-5">
+        {/* Contact Icon - Opens CallbackForm2 */}
+        <button onClick={() => setOpen(true)} className="text-white text-lg hover:opacity-60 transition">
+          <FaPhoneAlt />
+        </button>
 
-      <CallbackForm2 />
-      {/* Book a Callback Button */}
-      {/* <button className="bg-white text-black font-semibold px-4 py-1 my-1 ml-6 rounded-full hover:bg-gray-200 transition">
-        Book a Callback
-      </button> */}
-    </main>
+        {/* Instagram */}
+        <Link href="https://instagram.com" target="_blank">
+          <FaInstagram className="text-white text-lg hover:opacity-60 transition" />
+        </Link>
+
+        {/* LinkedIn */}
+        <Link href="https://linkedin.com" target="_blank">
+          <FaLinkedin className="text-white text-lg hover:opacity-60 transition" />
+        </Link>
+
+        {/* X (Twitter) */}
+        <Link href="https://twitter.com" target="_blank">
+          <FaXTwitter className="text-white text-lg hover:opacity-60 transition" />
+        </Link>
+      </div>
+
+      {/* Callback Form */}
+      <CallbackForm2 open={open} setOpen={setOpen} />
+    </nav>
   );
 };
 

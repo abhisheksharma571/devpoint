@@ -1,136 +1,111 @@
-"use client";
-import { useMotionValue, motion, useSpring, useTransform } from "framer-motion";
-import React, { useRef } from "react";
+import { cn } from "@/lib/utils";
+import {
+  IconDeviceDesktop,
+  IconShoppingCart,
+  IconSearch,
+  IconBrandFacebook,
+  IconChartLine,
+  IconShieldCheck,
+  IconUsers,
+  IconTools,
+} from "@tabler/icons-react";
 
-export const WhatWeOffer = () => {
+export function WhatWeOffer() {
+  const features = [
+    {
+      title: "Website Development",
+      description:
+        "Custom, responsive websites tailored for your business growth.",
+      icon: <IconDeviceDesktop />,
+    },
+    {
+      title: "E-Commerce Solutions",
+      description:
+        "Seamless online stores with secure payment integrations.",
+      icon: <IconShoppingCart />,
+    },
+    {
+      title: "SEO Optimization",
+      description:
+        "Boost your rankings and visibility with expert SEO strategies.",
+      icon: <IconSearch />,
+    },
+    {
+      title: "Social Media Marketing",
+      description:
+        "Grow your brand and engage customers across social platforms.",
+      icon: <IconBrandFacebook />,
+    },
+    {
+      title: "Data-Driven Analytics",
+      description:
+        "Gain insights with performance tracking and analytics tools.",
+      icon: <IconChartLine />,
+    },
+    {
+      title: "Secure Hosting & Maintenance",
+      description:
+        "Reliable, secure hosting and ongoing support for your website.",
+      icon: <IconShieldCheck />,
+    },
+    {
+      title: "Customer Engagement Strategies",
+      description:
+        "Improve customer retention with personalized marketing.",
+      icon: <IconUsers />,
+    },
+    {
+      title: "Custom Web Solutions",
+      description:
+        "Tailored digital solutions to fit your unique business needs.",
+      icon: <IconTools />,
+    },
+  ];
+  
   return (
-    <section className="bg-black/[0.96] antialiased bg-grid-white/[0.02] p-4 md:p-8">
-      <p className="text-4xl md:text-7xl font-bold text-center text-white mb-10">What We Offer?</p>
-      <div className="mx-auto max-w-6xl">
-        <Link
-          heading="Website Development"
-          subheading="We craft fast, responsive, and user-friendly websites for your business."
-          imgSrc="./web-dev.png"
-        />
-        <Link
-          heading="E-commerce Solutions"
-          subheading="Build secure, scalable stores designed for seamless shopping"
-          imgSrc="./e-com.png"
-        />
-        <Link
-          heading="SEO Optimization"
-          subheading="Boost rankings, drive traffic, and grow your online presence"
-          imgSrc="./seo.png"
-        />
-        <Link
-          heading="Social Media Marketing"
-          subheading="Connect, engage, and convert with strategic social campaigns"
-          imgSrc="./social.png"
-        />
+    <div className="bg-black/[0.96] antialiased bg-grid-white/[0.02]">
+        <p className="text-3xl md:text-5xl text-center text-white pt-20 pb-4">
+          Everything your business needs
+        </p>
+        <p className="text-center text-xl md:text-2xl text-white pb-4">
+          Websites, marketing, and branding for growth!
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 relative z-10 py-10 max-w-7xl mx-auto">
+        {features.map((feature, index) => (
+          <Feature key={feature.title} {...feature} index={index} />
+        ))}
       </div>
-    </section>
+    </div>
   );
-};
+}
 
-const Link = ({ heading, imgSrc, subheading, href }) => {
-  const ref = useRef(null);
-
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-
-  const mouseXSpring = useSpring(x);
-  const mouseYSpring = useSpring(y);
-
-  const top = useTransform(mouseYSpring, [0.5, -0.5], ["40%", "60%"]);
-  const left = useTransform(mouseXSpring, [0.5, -0.5], ["60%", "70%"]);
-
-  const handleMouseMove = (e) => {
-    const rect = ref.current.getBoundingClientRect();
-
-    const width = rect.width;
-    const height = rect.height;
-
-    const mouseX = e.clientX - rect.left;
-    const mouseY = e.clientY - rect.top;
-
-    const xPct = mouseX / width - 0.5;
-    const yPct = mouseY / height - 0.5;
-
-    x.set(xPct);
-    y.set(yPct);
-  };
-
+const Feature = ({ title, description, icon, index }) => {
   return (
-    <motion.a
-      ref={ref}
-      onMouseMove={handleMouseMove}
-      initial="initial"
-      whileHover="whileHover"
-      className="group relative flex items-center justify-between border-b-2 border-neutral-700 py-4 transition-colors duration-500 hover:border-neutral-50 md:py-8"
+    <div
+      className={cn(
+        "flex flex-col lg:border-r py-10 relative group/feature border-neutral-800",
+        (index === 0 || index === 4) && "lg:border-l border-neutral-800",
+        index < 4 && "lg:border-b border-neutral-800"
+      )}
     >
-      <div>
-        <motion.span
-          variants={{
-            initial: { x: 0 },
-            whileHover: { x: -16 },
-          }}
-          transition={{
-            type: "spring",
-            staggerChildren: 0.075,
-            delayChildren: 0.25,
-          }}
-          className="relative z-10 block text-4xl font-bold text-neutral-500 transition-colors duration-500 group-hover:text-neutral-50 md:text-6xl"
-        >
-          {heading.split(" ").map((word, i) => (
-            <motion.span
-              variants={{
-                initial: { x: 0 },
-                whileHover: { x: 16 },
-              }}
-              transition={{ type: "spring" }}
-              className="inline-block mr-2" // Add spacing between words
-              key={i}
-            >
-              {word}
-            </motion.span>
-          ))}
-        </motion.span>
-        <span className="relative z-10 mt-2 block text-base text-neutral-500 transition-colors duration-500 group-hover:text-neutral-50">
-          {subheading}
+      {index < 4 && (
+        <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-t from-neutral-800 to-transparent pointer-events-none" />
+      )}
+      {index >= 4 && (
+        <div className="opacity-0 group-hover/feature:opacity-100 transition duration-200 absolute inset-0 h-full w-full bg-gradient-to-b from-neutral-800 to-transparent pointer-events-none" />
+      )}
+      <div className="mb-4 relative z-10 px-10 text-neutral-600 dark:text-neutral-400">
+        {icon}
+      </div>
+      <div className="text-lg font-bold mb-2 relative z-10 px-10">
+        <div className="absolute left-0 inset-y-0 h-6 group-hover/feature:h-8 w-1 rounded-tr-full rounded-br-full bg-neutral-700 group-hover/feature:bg-blue-500 transition-all duration-200 origin-center" />
+        <span className="group-hover/feature:translate-x-2 transition duration-200 inline-block text-neutral-100">
+          {title}
         </span>
       </div>
-
-      <motion.img
-        style={{
-          top,
-          left,
-          translateX: "-50%",
-          translateY: "-50%",
-        }}
-        variants={{
-          initial: { scale: 0, rotate: "-12.5deg" },
-          whileHover: { scale: 1, rotate: "12.5deg" },
-        }}
-        transition={{ type: "spring" }}
-        src={imgSrc}
-        className="absolute z-0 h-24 w-auto rounded-lg object-cover md:h-60 md:w-auto ml-48"
-        alt={`Image representing a link for ${heading}`}
-      />
-
-      <motion.div
-        variants={{
-          initial: {
-            x: "25%",
-            opacity: 0,
-          },
-          whileHover: {
-            x: "0%",
-            opacity: 1,
-          },
-        }}
-        transition={{ type: "spring" }}
-        className="relative z-10 p-4"
-      ></motion.div>
-    </motion.a>
+      <p className="text-sm text-neutral-300 max-w-xs relative z-10 px-10">
+        {description}
+      </p>
+    </div>
   );
 };
