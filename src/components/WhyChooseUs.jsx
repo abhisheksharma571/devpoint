@@ -47,15 +47,15 @@ const WhyChooseUs = ({ containerClassName = "" }) => {
   const [hoveredIdx, setHoveredIdx] = useState(0);
 
   return (
-    <div className="bg-black/[0.96] antialiased bg-grid-white/[0.02]">
-      <p className="text-3xl md:text-5xl text-center text-white pt-20 pb-4">
+    <div className="bg-black/5 antialiased bg-grid-white/[0.02]">
+      <p className="text-[22px] md:text-5xl text-center text-white font-bold pt-8 md:pt-20 pb-1 md:pb-3">
         We don’t just build websites
       </p>
-      <p className="text-center text-xl md:text-2xl text-white pb-4">We build your brand’s digital presence!</p>
+      <p className="text-center text-sm md:text-2xl text-white pb-4">We build your brand’s digital presence!</p>
       <div
         onMouseLeave={() => setHoveredIdx(0)}
         className={clsx(
-          "grid md:grid-cols-3 px-32 pb-8",
+          "grid md:grid-cols-3 px-0 md:px-32 pb-8",
           containerClassName
         )}
       >

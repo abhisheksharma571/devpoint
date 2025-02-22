@@ -2,7 +2,7 @@ import { FaPhoneAlt, FaEnvelope, FaFacebookF, FaTwitter, FaInstagram, FaLinkedin
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-white py-10 px-5 md:px-24">
+    <footer className="bg-black text-white py-4 md:py-10 px-5 md:px-24">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
         
         {/* Logo */}
@@ -18,7 +18,7 @@ const Footer = () => {
             <FaPhoneAlt className="text-lime-500" /> +1 234 567 890
           </p>
           <p className="flex items-center gap-2 mt-2">
-            <FaEnvelope className="text-lime-500" /> info@yourcompany.com
+            <FaEnvelope className="text-lime-500" /> devpoint908@gmail.com
           </p>
         </div>
 
@@ -32,7 +32,7 @@ const Footer = () => {
             <a href="#" className="p-2 rounded-full bg-gray-800 hover:text-lime-500 transition">
               <FaTwitter />
             </a>
-            <a href="#" className="p-2 rounded-full bg-gray-800 hover:text-lime-500 transition">
+            <a href="https://www.instagram.com/devpoint.in/" className="p-2 rounded-full bg-gray-800 hover:text-lime-500 transition">
               <FaInstagram />
             </a>
             <a href="#" className="p-2 rounded-full bg-gray-800 hover:text-lime-500 transition">

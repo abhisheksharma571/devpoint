@@ -12,7 +12,7 @@ const CallbackForm2 = ({ open, setOpen }) => {
     const formData = new FormData(e.target);
 
     try {
-      const response = await fetch("https://formspree.io/f/xjkgpqgl", {
+      const response = await fetch("https://formspree.io/f/mrbedjle", {
         method: "POST",
         body: formData,
         headers: { Accept: "application/json" },

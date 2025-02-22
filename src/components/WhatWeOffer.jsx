@@ -64,10 +64,10 @@ export function WhatWeOffer() {
   
   return (
     <div className="bg-black/[0.96] antialiased bg-grid-white/[0.02]">
-        <p className="text-3xl md:text-5xl text-center text-white pt-20 pb-4">
+        <p className="text-[22px] md:text-5xl text-center text-white font-bold pt-20 pb-1 md:pb-3">
           Everything your business needs
         </p>
-        <p className="text-center text-xl md:text-2xl text-white pb-4">
+        <p className="text-center text-sm md:text-2xl text-white pb-4">
           Websites, marketing, and branding for growth!
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 relative z-10 py-10 max-w-7xl mx-auto">

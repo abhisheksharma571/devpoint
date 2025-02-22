@@ -23,7 +23,7 @@ const Navbar = () => {
         </button>
 
         {/* Instagram */}
-        <Link href="https://instagram.com" target="_blank">
+        <Link href="https://www.instagram.com/devpoint.in/" target="_blank">
           <FaInstagram className="text-white text-lg hover:opacity-60 transition" />
         </Link>
 

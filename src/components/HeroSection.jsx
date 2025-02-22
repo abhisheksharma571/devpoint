@@ -1,34 +1,30 @@
 "use client";
 import React from "react";
-import Threads from "./bitsui/Threads";
 import CallbackForm from "./CallbackForm";
+import { BackgroundBeams } from "./ui/background-beams";
 
-function HeroSection() {
+export default function HeroSection() {
   return (
-    <div className="h-screen w-full rounded-md flex md:items-center md:justify-center bg-black/[0.96] antialiased bg-grid-white/[0.02] relative overflow-hidden">
-      <div style={{ width: '100%', height: '690px', position: 'absolute' }}>
-      <Threads
-        amplitude={4}
-        distance={1}
-        enableMouseInteraction={true}
-      />
-      </div>
-      <div className="mt-16 p-4 max-w-7xl mx-auto relative z-10  w-full pt-20 md:pt-0">
-        <h1 className="text-4xl md:text-7xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 bg-opacity-50">
+    (<div
+      className="h-screen w-full rounded-md bg-neutral-950 relative flex flex-col items-center justify-center antialiased">
+      <div className="max-w-6xl mx-auto p-4">
+        <h1
+          className="relative z-10 text-3xl md:text-8xl  bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  text-center font-sans font-bold">
           Grow Your <br />
           Business Online with Us!
         </h1>
-        <p className="mt-4 font-normal text-base text-neutral-300 max-w-xl text-center mx-auto">
+        <p></p>
+        <p
+          className="text-neutral-500 max-w-2xl mx-auto my-4 text-lg text-center relative z-10">
           We craft high-performance websites and execute data-driven digital
           marketing strategies to boost your brand, attract customers, and drive
           success.
         </p>
-        <div className="mt-16">
+        <div className="mt-16 relative z-10">
           <CallbackForm />
         </div>
       </div>
-    </div>
+      <BackgroundBeams />
+    </div>)
   );
 }
-
-export default HeroSection;

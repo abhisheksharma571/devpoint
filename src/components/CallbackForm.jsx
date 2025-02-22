@@ -11,7 +11,7 @@ const CallbackForm = () => {
     const formData = new FormData(e.target);
 
     try {
-      const response = await fetch("https://formspree.io/f/xjkgpqgl", {  
+      const response = await fetch("https://formspree.io/f/mrbedjle", {  
         method: "POST",
         body: formData,
         headers: { Accept: "application/json" },
@@ -23,6 +23,7 @@ const CallbackForm = () => {
         toast({
             title: "Request sent Successfully!",
             description: "Please wait for our callback",
+            className: "bg-white",
           })
         e.target.reset();
       } else {
@@ -30,6 +31,7 @@ const CallbackForm = () => {
             variant: "destructive",
             title: "Uh oh! Something went wrong.",
             description: "There was a problem with your request.",
+            className: "bg-red-500",
             action: <ToastAction altText="Try again">Try again</ToastAction>,
           })
       }
@@ -38,6 +40,7 @@ const CallbackForm = () => {
             variant: "destructive",
             title: "Uh oh! Something went wrong.",
             description: "There was a problem with your request.",
+            className: "bg-red-500",
             action: <ToastAction altText="Try again">Try again</ToastAction>,
           })
     }
@@ -47,7 +50,7 @@ const CallbackForm = () => {
     <>
       <form
         onSubmit={handleSubmit}
-        className="flex items-center bg-black p-1 rounded-full max-w-md mx-auto border border-gray-700"
+        className="flex items-center bg-black p-1 rounded-full max-w-[353px] md:max-w-md mx-auto border border-gray-700"
       >
         <input
           type="tel"
