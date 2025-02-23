@@ -2,6 +2,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { Toaster } from "@/components/ui/toaster";
 import Footer from "@/components/Footer";
+import Loader from "@/components/Loader";
 
 export const metadata = {
   title: "Devpoint - Web Development & Digital Marketing Solutions",
@@ -67,12 +68,14 @@ export default function RootLayout({ children }) {
         <meta name="twitter:image" content={metadata.twitter.images[0]} />
       </head>
       <body>
+        <Loader>
         <div className="fixed top-0 z-50">
           <Navbar />
         </div>
         {children}
         <Footer />
         <Toaster />
+        </Loader>
       </body>
     </html>
   );

@@ -28,12 +28,12 @@ const Navbar = () => {
         </Link>
 
         {/* LinkedIn */}
-        <Link href="https://linkedin.com" target="_blank">
+        <Link href="https://www.linkedin.com/company/dev-point/about/?viewAsMember=true" target="_blank">
           <FaLinkedin className="text-white text-lg hover:opacity-60 transition" />
         </Link>
 
         {/* X (Twitter) */}
-        <Link href="https://twitter.com" target="_blank">
+        <Link href="#" target="_blank">
           <FaXTwitter className="text-white text-lg hover:opacity-60 transition" />
         </Link>
       </div>
