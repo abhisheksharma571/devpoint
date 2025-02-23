@@ -47,11 +47,11 @@ const WhyChooseUs = ({ containerClassName = "" }) => {
   const [hoveredIdx, setHoveredIdx] = useState(0);
 
   return (
-    <div className="bg-black/5 antialiased bg-grid-white/[0.02]">
-      <p className="text-[22px] md:text-5xl text-center text-white font-bold pt-8 md:pt-20 pb-1 md:pb-3">
+    <div className="bg-[#fffcdc]">
+      <p className="text-[22px] md:text-5xl text-center text-[#14281D] font-bold pt-8 md:pt-20 pb-1 md:pb-3">
         We don’t just build websites
       </p>
-      <p className="text-center text-sm md:text-2xl text-white pb-4">We build your brand’s digital presence!</p>
+      <p className="text-center text-sm md:text-2xl text-[#14281D] pb-4">We build your brand’s digital presence!</p>
       <div
         onMouseLeave={() => setHoveredIdx(0)}
         className={clsx(
@@ -75,7 +75,7 @@ const WhyChooseUs = ({ containerClassName = "" }) => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1, transition: { duration: 0.15 } }}
                     exit={{ opacity: 0.8, transition: { duration: 2, delay: 0.2 } }}
-                    className="absolute inset-0 z-0 block h-full w-full rounded-xl bg-lime-300/10"
+                    className="absolute inset-0 z-0 block h-full w-full rounded-xl bg-[#14281D]/10"
                   />
                 )}
               </AnimatePresence>
@@ -84,13 +84,13 @@ const WhyChooseUs = ({ containerClassName = "" }) => {
                 <div>
                   <h1
                     className={clsx(
-                      "font-medium text-white transition-all duration-300",
+                      "font-medium text-[#14281D] transition-all duration-300",
                       hoveredIdx === one.id && "text-orange-400"
                     )}
                   >
                     {one.title}
                   </h1>
-                  <p className="text-neutral-400">{one.description}</p>
+                  <p className="text-neutral-500">{one.description}</p>
                 </div>
               </div>
             </a>

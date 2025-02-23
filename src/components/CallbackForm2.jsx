@@ -47,16 +47,16 @@ const CallbackForm2 = ({ open, setOpen }) => {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent className="bg-white">
+      <DialogContent className="bg-[#fffcdc]">
         <DialogHeader>
-          <DialogTitle>You are one step away! Fill out the form.</DialogTitle>
+          <DialogTitle className="text-[#14281D] text-center">You are one step away! Fill out the form.</DialogTitle>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4">
-          <input type="text" name="name" placeholder="Your Name*" required className="w-full px-4 py-2 border rounded" />
-          <input type="email" name="email" placeholder="Your Email*" required className="w-full px-4 py-2 border rounded" />
-          <input type="tel" name="mobile" placeholder="Your Mobile No.*" pattern="[0-9]{10}" required className="w-full px-4 py-2 border rounded" />
-          <input type="text" name="company" placeholder="Your Company Name" className="w-full px-4 py-2 border rounded" />
-          <button type="submit" className="bg-black text-white font-semibold w-full py-2 rounded">
+          <input type="text" name="name" placeholder="Your Name*" required className="w-full px-4 py-2 border rounded bg-[#fffcdc]" />
+          <input type="email" name="email" placeholder="Your Email*" required className="w-full px-4 py-2 border rounded bg-[#fffcdc]" />
+          <input type="tel" name="mobile" placeholder="Your Mobile No.*" pattern="[0-9]{10}" required className="w-full px-4 py-2 border rounded bg-[#fffcdc]" />
+          <input type="text" name="company" placeholder="Your Company Name" className="w-full px-4 py-2 border rounded bg-[#fffcdc]" />
+          <button type="submit" className="bg-[#14281D] text-[#fffcdc] font-semibold w-full py-2 rounded">
             Submit Request
           </button>
         </form>

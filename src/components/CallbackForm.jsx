@@ -50,7 +50,7 @@ const CallbackForm = () => {
     <>
       <form
         onSubmit={handleSubmit}
-        className="flex items-center bg-black p-1 rounded-full max-w-[353px] md:max-w-md mx-auto border border-gray-700"
+        className="flex items-center bg-transparent p-1 rounded-full max-w-[353px] md:max-w-md mx-auto border border-gray-700"
       >
         <input
           type="tel"
@@ -63,7 +63,7 @@ const CallbackForm = () => {
 
         <button
           type="submit"
-          className="bg-lime-500 text-black font-semibold px-5 py-2 rounded-full hover:bg-lime-400 transition"
+          className="bg-[#14281D] text-[#fffcdc]/90  font-semibold px-5 py-2 rounded-full"
         >
           Request a Callback
         </button>

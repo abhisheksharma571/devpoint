@@ -32,13 +32,13 @@ const Loader = ({ children }) => {
   return (
     <>
       {loading ? (
-        <div className="flex items-center justify-center h-screen bg-black">
+        <div className="flex items-center justify-center h-screen bg-[#14281D]">
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="flex space-x-2 text-2xl text-white"
+            className="flex space-x-2 text-2xl text-[#fffcdc]"
           >
             {words.map((word, index) => (
               <motion.span key={index} variants={wordVariants}>
